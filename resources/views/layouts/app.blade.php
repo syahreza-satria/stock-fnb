@@ -23,6 +23,192 @@
         p, span, a, button, input, select, textarea, label, td, th, div {
             font-family: 'Inter', sans-serif !important;
         }
+        body {
+            background-color: #ffffff !important;
+        }
+        #content-wrapper {
+            background-color: #ffffff !important;
+        }
+        /* Custom Modern Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #ffffff;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D0E7E6;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #95CCDD;
+        }
+        /* Global Premium CSS Tokens */
+        .card {
+            border: 1px solid #D0E7E6 !important;
+            border-radius: 16px !important;
+            box-shadow: 0 4px 12px rgba(41, 54, 129, 0.03) !important;
+            transition: all 0.25s ease-in-out;
+            background-color: #ffffff !important;
+        }
+        .card-header {
+            background-color: #ffffff !important;
+            border-bottom: 1px solid #D0E7E6 !important;
+            padding: 18px 24px !important;
+            border-top-left-radius: 16px !important;
+            border-top-right-radius: 16px !important;
+        }
+        .card-body {
+            padding: 24px !important;
+            background-color: #ffffff !important;
+        }
+        .table {
+            border-collapse: separate !important;
+            border-spacing: 0 4px !important;
+        }
+        .table th {
+            font-weight: 700 !important;
+            text-transform: uppercase;
+            font-size: 11px !important;
+            letter-spacing: 0.8px;
+            color: #293681 !important;
+            border-bottom: 2px solid #95CCDD !important;
+            padding: 14px 16px !important;
+        }
+        .table td {
+            vertical-align: middle !important;
+            padding: 16px !important;
+            background: #ffffff;
+            border-top: 1px solid #D0E7E6 !important;
+            border-bottom: 1px solid #D0E7E6 !important;
+            color: #293681;
+        }
+        .table tr:hover td {
+            background: #D0E7E6;
+            color: #293681 !important;
+        }
+        .table-responsive {
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        /* Input & Controls */
+        .form-control, .form-select, select {
+            border-radius: 10px !important;
+            border: 1px solid #95CCDD !important;
+            padding: 10px 16px !important;
+            height: auto !important;
+            font-size: 14px !important;
+            transition: all 0.2s;
+            background-color: #ffffff !important;
+            color: #293681 !important;
+        }
+        .form-control:focus, select:focus {
+            border-color: #4274D9 !important;
+            box-shadow: 0 0 0 3px rgba(66, 116, 217, 0.15) !important;
+        }
+        /* Premium Buttons */
+        .btn {
+            border-radius: 10px !important;
+            padding: 10px 20px !important;
+            font-weight: 600 !important;
+            font-size: 13px !important;
+            letter-spacing: 0.3px;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-primary {
+            background-color: #4274D9 !important;
+            border-color: #4274D9 !important;
+            color: #ffffff !important;
+            box-shadow: 0 4px 6px -1px rgba(66, 116, 217, 0.2) !important;
+        }
+        .btn-primary:hover {
+            background-color: #293681 !important;
+            border-color: #293681 !important;
+            transform: translateY(-1px);
+            box-shadow: 0 10px 15px -3px rgba(41, 54, 129, 0.3) !important;
+        }
+        /* Accent colors keep their standard colors (Edit: warning, Delete: danger, etc) */
+        .btn-warning {
+            background-color: #ffc107 !important;
+            border-color: #ffc107 !important;
+            color: #212529 !important;
+        }
+        .btn-danger {
+            background-color: #dc3545 !important;
+            border-color: #dc3545 !important;
+            color: #ffffff !important;
+        }
+        .btn-success {
+            background-color: #28a745 !important;
+            border-color: #28a745 !important;
+            color: #ffffff !important;
+        }
+        .btn-info {
+            background-color: #17a2b8 !important;
+            border-color: #17a2b8 !important;
+            color: #ffffff !important;
+        }
+        .btn-secondary {
+            background-color: #6c757d !important;
+            border-color: #6c757d !important;
+            color: #ffffff !important;
+        }
+        /* Badges */
+        .badge {
+            border-radius: 30px !important;
+            padding: 6px 14px !important;
+            font-weight: 700 !important;
+            font-size: 11px !important;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .badge-primary {
+            background-color: rgba(66, 116, 217, 0.1) !important;
+            color: #4274D9 !important;
+        }
+        .badge-success {
+            background-color: rgba(40, 167, 69, 0.1) !important;
+            color: #28a745 !important;
+        }
+        .badge-warning {
+            background-color: rgba(255, 193, 7, 0.1) !important;
+            color: #ffc107 !important;
+        }
+        .badge-danger {
+            background-color: rgba(220, 53, 69, 0.1) !important;
+            color: #dc3545 !important;
+        }
+        .badge-secondary {
+            background-color: rgba(108, 117, 125, 0.1) !important;
+            color: #6c757d !important;
+        }
+        .badge-info {
+            background-color: rgba(23, 162, 184, 0.1) !important;
+            color: #17a2b8 !important;
+        }
+        /* Custom alert */
+        .alert {
+            border-radius: 12px !important;
+            border: 1px solid #D0E7E6 !important;
+            padding: 16px 24px !important;
+        }
+        /* Title styling */
+        .page-header-title {
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #293681;
+        }
+        /* Sidebar styling override */
+        .sidebar {
+            background-color: #293681 !important;
+            background-image: none !important;
+        }
+        /* Topbar styling */
+        .topbar {
+            background-color: #ffffff !important;
+            border-bottom: 1px solid #D0E7E6;
+        }
     </style>
     @stack('styles')
 

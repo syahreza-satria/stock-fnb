@@ -5,24 +5,27 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class StockMovement extends Model
+class Waste extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
-
     protected $fillable = [
         'ingredient_id',
+        'user_id',
         'outlet_id',
-        'type',
         'quantity',
+        'reason',
         'description',
-        'created_at',
     ];
 
     public function ingredient()
     {
         return $this->belongsTo(Ingredient::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function outlet()

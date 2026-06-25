@@ -5,28 +5,30 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class StockMovement extends Model
+class PurchaseOrderDetail extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
-
     protected $fillable = [
+        'purchase_order_id',
         'ingredient_id',
-        'outlet_id',
-        'type',
+        'unit_id',
         'quantity',
-        'description',
-        'created_at',
+        'unit_price',
     ];
+
+    public function purchaseOrder()
+    {
+        return $this->belongsTo(PurchaseOrder::class);
+    }
 
     public function ingredient()
     {
         return $this->belongsTo(Ingredient::class);
     }
 
-    public function outlet()
+    public function unit()
     {
-        return $this->belongsTo(Outlet::class);
+        return $this->belongsTo(Unit::class, 'unit_id');
     }
 }

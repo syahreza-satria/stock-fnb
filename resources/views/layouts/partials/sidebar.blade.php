@@ -40,6 +40,27 @@
             <span>Resep</span></a>
     </li>
 
+    <!-- Nav Item - Wastes -->
+    <li class="nav-item {{ Request::routeIs('wastes.*') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('wastes.index') }}">
+            <i class="fas fa-fw fa-trash-alt"></i>
+            <span>Pembuangan (Waste)</span></a>
+    </li>
+
+    <!-- Nav Item - Suppliers -->
+    <li class="nav-item {{ Request::routeIs('suppliers.*') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('suppliers.index') }}">
+            <i class="fas fa-fw fa-truck"></i>
+            <span>Daftar Supplier</span></a>
+    </li>
+
+    <!-- Nav Item - Purchase Orders -->
+    <li class="nav-item {{ Request::routeIs('purchase-orders.*') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('purchase-orders.index') }}">
+            <i class="fas fa-fw fa-shopping-cart"></i>
+            <span>Purchase Order (PO)</span></a>
+    </li>
+
     <!-- Nav Item - POS / Sales Simulation -->
     <li class="nav-item {{ Request::routeIs('orders.*') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('orders.index') }}">
@@ -56,10 +77,39 @@
     </div>
 
     <!-- Nav Item - Reports -->
-    <li class="nav-item {{ Request::routeIs('reports.*') ? 'active' : '' }}">
+    <li class="nav-item {{ Request::routeIs('reports.index') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('reports.index') }}">
             <i class="fas fa-fw fa-chart-line"></i>
             <span>Log Pergerakan Stok</span></a>
+    </li>
+
+    <!-- Nav Item - Advanced Analytics -->
+    <li class="nav-item {{ Request::routeIs('reports.analytics') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('reports.analytics') }}">
+            <i class="fas fa-fw fa-diagnoses"></i>
+            <span>Analitik Lanjutan</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading: Pengaturan & Sistem -->
+    <div class="sidebar-heading">
+        Pengaturan & Sistem
+    </div>
+
+    <!-- Nav Item - Outlets -->
+    <li class="nav-item {{ Request::routeIs('outlets.*') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('outlets.index') }}">
+            <i class="fas fa-fw fa-store"></i>
+            <span>Outlet & Gudang</span></a>
+    </li>
+
+    <!-- Nav Item - Units -->
+    <li class="nav-item {{ Request::routeIs('units.*') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('units.index') }}">
+            <i class="fas fa-fw fa-balance-scale"></i>
+            <span>Satuan & Konversi</span></a>
     </li>
 
     <!-- Divider -->

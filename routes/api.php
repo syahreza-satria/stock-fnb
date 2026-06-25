@@ -19,6 +19,9 @@ use App\Http\Controllers\Api\ApiIngredientController;
 use App\Http\Controllers\Api\ApiRecipeController;
 use App\Http\Controllers\Api\ApiOrderController;
 use App\Http\Controllers\Api\ApiReportController;
+use App\Http\Controllers\Api\ApiWasteController;
+use App\Http\Controllers\Api\ApiSupplierController;
+use App\Http\Controllers\Api\ApiPurchaseOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +53,27 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::put('/ingredients/{ingredient}', [ApiIngredientController::class, 'update']);
         Route::delete('/ingredients/{ingredient}', [ApiIngredientController::class, 'destroy']);
         Route::post('/ingredients/{ingredient}/adjust', [ApiIngredientController::class, 'adjustStock']);
+    });
+
+    // Wastes - View (all roles) & Record (admin, staff)
+    Route::get('/wastes', [ApiWasteController::class, 'index']);
+    Route::post('/wastes', [ApiWasteController::class, 'store'])->middleware('role:admin,staff');
+
+    // Suppliers API
+    Route::get('/suppliers', [ApiSupplierController::class, 'index']);
+    Route::get('/suppliers/{supplier}', [ApiSupplierController::class, 'show']);
+    Route::middleware('role:admin,staff')->group(function () {
+        Route::post('/suppliers', [ApiSupplierController::class, 'store']);
+        Route::put('/suppliers/{supplier}', [ApiSupplierController::class, 'update']);
+        Route::delete('/suppliers/{supplier}', [ApiSupplierController::class, 'destroy']);
+    });
+
+    // Purchase Orders API
+    Route::get('/purchase-orders', [ApiPurchaseOrderController::class, 'index']);
+    Route::get('/purchase-orders/{purchaseOrder}', [ApiPurchaseOrderController::class, 'show']);
+    Route::middleware('role:admin,staff')->group(function () {
+        Route::post('/purchase-orders', [ApiPurchaseOrderController::class, 'store']);
+        Route::post('/purchase-orders/{purchaseOrder}/receive', [ApiPurchaseOrderController::class, 'receive']);
     });
 
     // Recipes - View (all roles)

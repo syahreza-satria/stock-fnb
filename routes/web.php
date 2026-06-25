@@ -8,6 +8,11 @@ use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WasteController;
+use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\PurchaseOrderController;
+use App\Http\Controllers\OutletController;
+use App\Http\Controllers\UnitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +47,41 @@ Route::middleware('auth')->group(function () {
         Route::post('/ingredients/{ingredient}/adjust', [IngredientController::class, 'adjustStock'])->name('ingredients.adjust');
     });
 
+    // WASTE / PEMBUANGAN ROUTES
+    Route::get('/wastes', [WasteController::class, 'index'])->name('wastes.index');
+    Route::post('/wastes', [WasteController::class, 'store'])->middleware('role:admin,staff')->name('wastes.store');
+
+    // SUPPLIER ROUTES
+    Route::get('/suppliers', [SupplierController::class, 'index'])->name('suppliers.index');
+    Route::middleware('role:admin,staff')->group(function () {
+        Route::post('/suppliers', [SupplierController::class, 'store'])->name('suppliers.store');
+        Route::put('/suppliers/{supplier}', [SupplierController::class, 'update'])->name('suppliers.update');
+        Route::delete('/suppliers/{supplier}', [SupplierController::class, 'destroy'])->name('suppliers.destroy');
+    });
+
+    // PURCHASE ORDER ROUTES
+    Route::get('/purchase-orders', [PurchaseOrderController::class, 'index'])->name('purchase-orders.index');
+    Route::get('/purchase-orders/create', [PurchaseOrderController::class, 'create'])->middleware('role:admin,staff')->name('purchase-orders.create');
+    Route::post('/purchase-orders', [PurchaseOrderController::class, 'store'])->middleware('role:admin,staff')->name('purchase-orders.store');
+    Route::get('/purchase-orders/{purchaseOrder}', [PurchaseOrderController::class, 'show'])->name('purchase-orders.show');
+    Route::post('/purchase-orders/{purchaseOrder}/receive', [PurchaseOrderController::class, 'receive'])->middleware('role:admin,staff')->name('purchase-orders.receive');
+
+    // OUTLET ROUTES
+    Route::get('/outlets', [OutletController::class, 'index'])->name('outlets.index');
+    Route::middleware('role:admin,staff')->group(function () {
+        Route::post('/outlets', [OutletController::class, 'store'])->name('outlets.store');
+        Route::put('/outlets/{outlet}', [OutletController::class, 'update'])->name('outlets.update');
+        Route::delete('/outlets/{outlet}', [OutletController::class, 'destroy'])->name('outlets.destroy');
+    });
+
+    // UNIT & CONVERSION ROUTES
+    Route::get('/units', [UnitController::class, 'index'])->name('units.index');
+    Route::middleware('role:admin,staff')->group(function () {
+        Route::post('/units', [UnitController::class, 'storeUnit'])->name('units.store');
+        Route::post('/units/conversions', [UnitController::class, 'storeConversion'])->name('units.conversions.store');
+        Route::delete('/units/conversions/{conversion}', [UnitController::class, 'destroyConversion'])->name('units.conversions.destroy');
+    });
+
     // RECIPE ROUTES
     // View recipes (all roles)
     Route::get('/recipes', [RecipeController::class, 'index'])->name('recipes.index');
@@ -60,9 +100,14 @@ Route::middleware('auth')->group(function () {
     // Process sale (admin & staff only)
     Route::post('/orders/sell', [OrderController::class, 'processSale'])->middleware('role:admin,staff')->name('orders.sell');
 
-    // REPORTS (all roles)
+    // REPORTS & ANALYTICS (all roles)
     Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
     Route::get('/reports/export/pdf', [ReportController::class, 'exportPdf'])->name('reports.export.pdf');
+    
+    // ADVANCED ANALYTICS ROUTES
+    Route::get('/reports/analytics', [\App\Http\Controllers\AnalyticsController::class, 'index'])->name('reports.analytics');
+    Route::post('/reports/analytics/pricing', [\App\Http\Controllers\AnalyticsController::class, 'updatePricing'])->middleware('role:admin,staff')->name('analytics.pricing.update');
+    Route::post('/reports/analytics/stock-take', [\App\Http\Controllers\AnalyticsController::class, 'storeStockTake'])->middleware('role:admin,staff')->name('analytics.stock-take.store');
 
     // USER MANAGEMENT (admin only)
     Route::middleware('role:admin')->group(function () {

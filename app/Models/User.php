@@ -39,6 +39,11 @@ class User extends Authenticatable
         return $this->role === 'owner';
     }
 
+    public function wastes()
+    {
+        return $this->hasMany(Waste::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
