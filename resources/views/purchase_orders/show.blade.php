@@ -5,7 +5,7 @@
 @section('content')
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Detail Purchase Order: <span class="font-weight-bold text-primary">{{ $purchaseOrder->po_number }}</span></h1>
-        <div>
+        <div class="d-flex flex-wrap mt-2 mt-sm-0" style="gap: 8px;">
             <a href="{{ route('purchase-orders.index') }}" class="btn btn-secondary shadow-sm">
                 <i class="fas fa-arrow-left fa-sm mr-1"></i> Kembali ke Daftar PO
             </a>

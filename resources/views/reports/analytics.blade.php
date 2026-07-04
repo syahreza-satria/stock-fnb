@@ -9,9 +9,9 @@
             <h1 class="h3 mb-0 text-gray-800 font-weight-bold" style="letter-spacing: -0.5px;">Analitik Lanjutan</h1>
             <p class="text-muted mb-0 small">Analisa margin, variance stock opname, dead stock, dan tren konsumsi musiman</p>
         </div>
-        <div class="d-flex">
+        <div class="d-flex flex-wrap mt-2 mt-sm-0" style="gap: 8px;">
             @if(Auth::user()->isAdmin() || Auth::user()->isStaff())
-                <button class="btn btn-success shadow-sm mr-2" data-toggle="modal" data-target="#pricingModal">
+                <button class="btn btn-success shadow-sm" data-toggle="modal" data-target="#pricingModal">
                     <i class="fas fa-tags mr-1"></i> Atur Harga & Modal
                 </button>
                 <button class="btn btn-primary shadow-sm" data-toggle="modal" data-target="#stockTakeModal">

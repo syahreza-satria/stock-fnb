@@ -18,6 +18,70 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
     <style>
+        /* Responsive CSS Additions */
+        /* Horizontal scroll and swipe optimizations for tables */
+        .table-responsive {
+            -webkit-overflow-scrolling: touch;
+            overflow-x: auto;
+        }
+
+        /* Horizontal scrolling for navigation tabs/pills on mobile instead of wrapping */
+        @media (max-width: 768px) {
+            .nav-pills, .nav-tabs {
+                flex-wrap: nowrap !important;
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 8px;
+            }
+            .nav-pills .nav-item, .nav-tabs .nav-item {
+                white-space: nowrap;
+            }
+            
+            /* Spacing for stacked columns on mobile */
+            .row > [class*="col-"] {
+                margin-bottom: 12px;
+            }
+            .row > [class*="col-"]:last-child {
+                margin-bottom: 0;
+            }
+            
+            /* Responsive margins/padding adjustments */
+            .card-body {
+                padding: 16px !important;
+            }
+            .table td, .table th {
+                padding: 12px !important;
+            }
+        }
+
+        /* Toast container responsiveness */
+        @media (max-width: 576px) {
+            .toast-container {
+                top: 12px !important;
+                right: 12px !important;
+                left: 12px !important;
+                width: calc(100% - 24px);
+            }
+            .custom-toast {
+                min-width: 100% !important;
+                width: 100% !important;
+            }
+        }
+
+        /* Responsive button layouts in tables */
+        @media (max-width: 991px) {
+            .btn-group, .btn-group-vertical {
+                display: inline-flex !important;
+                flex-wrap: wrap;
+                gap: 4px;
+            }
+            .btn-group > .btn, .btn-group-vertical > .btn {
+                flex: 1 1 auto;
+                border-radius: 6px !important;
+                margin-right: 0 !important;
+            }
+        }
+
         body, h1, h2, h3, h4, h5, h6,
         .h1, .h2, .h3, .h4, .h5, .h6,
         p, span, a, button, input, select, textarea, label, td, th, div {
